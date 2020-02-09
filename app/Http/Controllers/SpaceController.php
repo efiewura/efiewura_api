@@ -27,17 +27,17 @@ class SpaceController extends Controller
         if(isset($request->cat)){
             switch ($request->cat) {
                 case 'regions':
-                    $space = Space::with(['location','photos.location','tags'])->get()->groupBy('location.region');
+                    $space = Space::with(['location','photos','tags'])->get()->groupBy('location.region');
                     break;
                 case 'towns':
-                    $space = Space::with(['location','photos.location','tags'])->get()->groupBy('location.town');
+                    $space = Space::with(['location','photos','tags'])->get()->groupBy('location.town');
                     break;
                 case 'weeks':
-                    $space = Space::with(['location','photos.location','tags'])->get()->groupBy(function ($val) {
+                    $space = Space::with(['location','photos','tags'])->get()->groupBy(function ($val) {
                                     return Carbon::parse($val->created_at)->week();
                                 });
                 case 'months':
-                    $space = Space::with(['location','photos.location','tags'])->get()->groupBy(function ($val) {
+                    $space = Space::with(['location','photos','tags'])->get()->groupBy(function ($val) {
                                     return Carbon::parse($val->created_at)->format('m');
                                 });
                     break;

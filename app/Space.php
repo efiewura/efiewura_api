@@ -8,7 +8,7 @@ class Space extends Model
 {
 	
     protected $with = ['efiewura','location','photos','tags'];
-    protected $fillable = ['name'];
+    protected $fillable = ['name','grant'];
     //
 	public function efiewura()
 	{
